@@ -13,7 +13,7 @@ interface Props {
 }
 
 export function ChallengeLayoutWrapper({ challenge, track, children }: Props) {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > MOBILE_BREAKPOINT);
+  const [isDesktop, setIsDesktop] = useState(window?.innerWidth > MOBILE_BREAKPOINT);
   const LEFT_PANEL_BREAKPOINT = isDesktop ? 500 : 318;
   const DEFAULT_DESKTOP_WIDTH_PX = `${LEFT_PANEL_BREAKPOINT}px`;
   const { leftSide, adjustPanelSize, expandPanel, collapsePanel, isLeftPanelCollapsed } =

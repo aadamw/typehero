@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import { MoreHorizontal, type LucideIcon } from 'lucide-react';
 import {
   DropdownMenu,
