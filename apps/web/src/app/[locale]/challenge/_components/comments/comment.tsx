@@ -222,17 +222,17 @@ function SingleComment({
 
   async function copyCommentUrlToClipboard(isReply: boolean, slug: string) {
     const commentId = isReply ? comment.parentId : comment.id;
-    const paramsObj = { replyId: String(comment.id) };
-    const searchParams = new URLSearchParams(paramsObj);
+    const searchParams = new URLSearchParams({
+      commentId: String(commentId),
+      ...(isReply && { replyId: String(comment.id) }),
+    });
 
     const { rootType, rootSolutionId } = comment;
     const baseURL = `${window.location.origin}/challenge/${slug}`;
-    const hasGetParams = isReply ? `?${searchParams.toString()}` : '';
+    const qs = `?${searchParams.toString()}`;
 
     const shareUrl =
-      rootType === 'CHALLENGE'
-        ? `${baseURL}/comments/${commentId}${hasGetParams}`
-        : `${baseURL}/solutions/${rootSolutionId}/comments/${commentId}${hasGetParams}`;
+      rootType === 'CHALLENGE' ? `${baseURL}${qs}` : `${baseURL}/solutions/${rootSolutionId}${qs}`;
 
     await navigator.clipboard.writeText(shareUrl);
   }

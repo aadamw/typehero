@@ -8,8 +8,8 @@ import { FullscreenButton } from '../_components/fullscreen';
 import { ResetEditorButton } from '../_components/reset-editor-button';
 import { SettingsButton } from '../_components/settings/settings-button';
 import type { ChallengeRouteData } from './getChallengeRouteData';
-import { SubmissionOverview } from './submissions/[[...catchAll]]/_components/overview';
-import { saveSubmission } from './submissions/[[...catchAll]]/save-submission.action';
+import { SubmissionOverview } from './@left/submissions/_components/overview';
+import { saveSubmission } from './@left/submissions/save-submission.action';
 
 interface Props {
   challenge: ChallengeRouteData['challenge'];
@@ -19,6 +19,7 @@ interface Props {
 export function Wrapper({ track, challenge }: Props) {
   const router = useRouter();
   const segments = useSelectedLayoutSegments();
+
   const { data: session } = useSession();
 
   if (!challenge) return null;
